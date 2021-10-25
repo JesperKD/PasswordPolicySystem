@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebLoginDemo.Data;
@@ -11,7 +10,11 @@ namespace WebLoginDemo.Repositories
     {
         private readonly IDatabase _sqlDatabase;
 
-
+        /// <summary>
+        /// Saves a new login to the database
+        /// </summary>
+        /// <param name="createEntity"></param>
+        /// <returns></returns>
         public async Task CreateAsync(Login createEntity)
         {
             string cmdText = @"INSERT INTO `PasswordPolicyDB`.`Login`
@@ -28,7 +31,10 @@ namespace WebLoginDemo.Repositories
             await _sqlDatabase.ExecuteNonQueryAsync(cmdText, sqlParams);
         }
 
-
+        /// <summary>
+        /// Returns all login data from the database
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Login>> GetAllAsync()
         {
             string cmdText = @"SELECT * FROM `PasswordPolicyDB`.`Login`";
@@ -52,7 +58,11 @@ namespace WebLoginDemo.Repositories
             return logins;
         }
 
-
+        /// <summary>
+        /// Returns a specific login from the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public async Task<Login> GetByUsernameAsync(string username)
         {
             string cmdText = @"SELECT * FROM `PasswordPolicyDB`.`Login` WHERE `username` = @username";
