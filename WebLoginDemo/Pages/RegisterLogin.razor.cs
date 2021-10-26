@@ -12,20 +12,20 @@ namespace WebLoginDemo.Pages
 {
     public partial class RegisterLogin
     {
+        [Inject] private LoginService LoginService { get; set; }
+        [Inject] private LoginRepository LoginRepository { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         private bool isProcessingSubmit = false;
         private string _infoMessage = string.Empty;
         private string _successMessage = string.Empty;
         private string _errorMessage = string.Empty;
 
         private LoginModel LoginModel;
-        private LoginService LoginService;
-        private readonly LoginRepository LoginRepository;
-        private readonly NavigationManager _NavigationManager;
 
         protected async override Task OnInitializedAsync()
         {
             LoginModel = new();
-            LoginService = new(LoginRepository);
 
             await base.OnInitializedAsync();
         }
@@ -41,7 +41,7 @@ namespace WebLoginDemo.Pages
 
                 await LoginService.CreateAsync(login);
 
-                _NavigationManager.NavigateTo("/");
+                NavigationManager.NavigateTo("/rsuccess");
             }
             catch (System.Exception ex)
             {
@@ -56,6 +56,7 @@ namespace WebLoginDemo.Pages
         {
             LoginModel = new();
         }
+
 
         private void ClearMessages()
         {

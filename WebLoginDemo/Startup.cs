@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebLoginDemo.Data;
+using WebLoginDemo.Data.Repositories;
+using WebLoginDemo.Data.Services;
 
 namespace WebLoginDemo
 {
@@ -28,6 +30,12 @@ namespace WebLoginDemo
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+
+            services.AddScoped<IDatabase, SqlDatabase>();
+            services.AddScoped<LoginRepository>();
+            services.AddScoped<LoginService>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
