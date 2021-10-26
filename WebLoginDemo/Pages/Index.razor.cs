@@ -1,86 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using WebLoginDemo.DataModels;
+using WebLoginDemo.Data.Services;
+using WebLoginDemo.Data.FormModels;
+using Microsoft.AspNetCore.Components;
 
 namespace WebLoginDemo.Pages
 {
     public partial class Index
     {
-        private bool isProcessingPasswordChangeRequest = false;
+        private bool isProcessingSubmit = false;
         private string _infoMessage = string.Empty;
         private string _successMessage = string.Empty;
         private string _errorMessage = string.Empty;
-        private string _sessionUserEmail = string.Empty;
-        private bool _isLoadingData = false;
-        private bool _hasValidSession = true;
-        private bool _isProcessingRequest = false;
 
-        private ChangePasswordModel changePasswordModel;
+        private NavigationManager NavigationManager;
+        private LoginModel LoginModel;
+        private LoginService LoginService;
 
         protected async override Task OnInitializedAsync()
         {
-            changePasswordModel = new();
+            LoginModel = new();
             
-            _isLoadingData = true;
-
-            _isLoadingData = false;
-
             await base.OnInitializedAsync();
         }
 
-
-        private async Task OnValidSubmit_ChangeUserPassword()
+        private async Task OnValidSubmit()
         {
             ClearMessages();
-
+            
+            isProcessingSubmit = true;
             try
             {
-                isProcessingPasswordChangeRequest = true;
+                Login login = new(
+                    username: LoginModel.Username,
+                    password: LoginModel.Password,
+                    attempts: LoginModel.Attempts
+                    ) ;
 
-                _infoMessage = "Arbejder på det, vent venligst..";
+                await LoginService.CreateAsync(login);
 
-                IUser user = await UserService.GetUserByEmailAsync(_sessionUserEmail, _tokenSource.Token);
+                NavigationManager.NavigateTo("");
 
-                //Role role = null;
-                //Location location = null;
-                //List<Area> areaList = new List<Area>();
-
-                //User user = new(0, role, location, areaList, string.Empty, string.Empty, changePasswordModel.Email, changePasswordModel.Password);
-
-                user.SetPassword(changePasswordModel.Password);
-
-                user.GenerateSalt();
-                user.HashPassword();
-
-                await UserService.UpdateUserPasswordAsync(user, _tokenSource.Token);
-
-                _infoMessage = "Adgangskode blev ændret.";
             }
-            catch (Exception)
+            catch (System.Exception ex)
             {
-                ClearMessages();
-                _errorMessage = "Kunne ikke ændre adgangskode, prøv igen senere.";
-            }
-            finally
-            {
-                ResetModelInformation();
-
-                isProcessingPasswordChangeRequest = false;
+                _errorMessage = ex.Message;
+                isProcessingSubmit = false;
+                StateHasChanged();
             }
         }
 
-        private void OnInvalidSubmit_ChangeUserPassword()
-        {
-            _errorMessage = "Venligst udfyld de manglende felter, markeret med rød.";
-        }
 
         private void ResetModelInformation()
         {
-            changePasswordModel = new();
-
-            changePasswordModel.Email = _sessionUserEmail;
+            LoginModel = new();
         }
 
         private void ClearMessages()
