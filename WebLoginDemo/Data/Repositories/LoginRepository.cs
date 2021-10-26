@@ -1,14 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebLoginDemo.Data;
 using WebLoginDemo.DataModels;
 
-namespace WebLoginDemo.Repositories
+namespace WebLoginDemo.Data.Repositories
 {
     public class LoginRepository
     {
         private readonly IDatabase _sqlDatabase;
+
+        public LoginRepository(IDatabase database)
+        {
+            _sqlDatabase = database;
+        }
 
         /// <summary>
         /// Saves a new login to the database
