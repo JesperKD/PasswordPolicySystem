@@ -57,7 +57,6 @@ namespace WebLoginDemo.Pages
             }
         }
 
-
         private void ResetModelInformation()
         {
             LoginModel = new();

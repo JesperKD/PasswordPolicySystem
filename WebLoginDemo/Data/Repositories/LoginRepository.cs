@@ -94,6 +94,11 @@ namespace WebLoginDemo.Data.Repositories
             return login;
         }
 
+        /// <summary>
+        /// Checks if given password matches user's saved password
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public async Task<bool> CheckLogin(Login login)
         {
             Login tempUser = await GetByUsernameAsync(login.Username);
