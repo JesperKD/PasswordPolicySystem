@@ -13,7 +13,7 @@ namespace WebLoginDemo.Data
 
         public SqlDatabase(IConfiguration configuration) : base(configuration)
         {
-            string connString = GetConnectionString(configuration.GetSection("UseConnection").Value);
+            string connString = @"Server=(localdb)\MSSQLLOCALDB; Database=PasswordPolicyDB;";
             _sqlConnection = new(connString);
         }
 
