@@ -1,12 +1,16 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using WebLoginDemo.Data.Services;
 using WebLoginDemo.Data.FormModels;
-using Microsoft.AspNetCore.Components;
 using WebLoginDemo.Data.Repositories;
+using Microsoft.AspNetCore.Components;
+using WebLoginDemo.DataModels;
 
 namespace WebLoginDemo.Pages
 {
-    public partial class Index
+    public partial class RegisterLogin
     {
         private bool isProcessingSubmit = false;
         private string _infoMessage = string.Empty;
@@ -22,27 +26,22 @@ namespace WebLoginDemo.Pages
         {
             LoginModel = new();
             LoginService = new(LoginRepository);
-            
+
             await base.OnInitializedAsync();
         }
 
         private async Task OnValidSubmit()
         {
             ClearMessages();
-            
+
             isProcessingSubmit = true;
             try
             {
-                var result = await LoginService.GetByUsernameAsync(LoginModel.Username);
+                Login login = new(LoginModel.Username, LoginModel.Password, LoginModel.Attempts);
 
-                if(result != null) _NavigationManager.NavigateTo("/success");
+                await LoginService.CreateAsync(login);
 
-                else
-                {
-                    _errorMessage = "Bruger findes ikke i systemet.";
-                }
-                
-
+                _NavigationManager.NavigateTo("/");
             }
             catch (System.Exception ex)
             {
