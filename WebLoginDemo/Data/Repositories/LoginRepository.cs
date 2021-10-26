@@ -21,8 +21,8 @@ namespace WebLoginDemo.Data.Repositories
         /// <returns></returns>
         public async Task CreateAsync(Login createEntity)
         {
-            string cmdText = @"INSERT INTO `PasswordPolicyDB`.`Login`
-                                (`username`, `password`, `attempts`)
+            string cmdText = @"INSERT INTO [PasswordPolicyDB].[dbo].[Logins]
+                                ([Username], [Password], [Attempts])
                                 VALUES (@username, @password, @attempts)";
 
             IDictionary<string, object> sqlParams = new Dictionary<string, object>
@@ -41,7 +41,7 @@ namespace WebLoginDemo.Data.Repositories
         /// <returns></returns>
         public async Task<IEnumerable<Login>> GetAllAsync()
         {
-            string cmdText = @"SELECT * FROM `PasswordPolicyDB`.`Login`";
+            string cmdText = @"SELECT * FROM [PasswordPolicyDB].[dbo].[Logins]";
 
             using var datareader = await _sqlDatabase.GetDataReaderAsync(cmdText);
 
@@ -69,14 +69,14 @@ namespace WebLoginDemo.Data.Repositories
         /// <returns></returns>
         public async Task<Login> GetByUsernameAsync(string username)
         {
-            string cmdText = @"SELECT * FROM `PasswordPolicyDB`.`Login` WHERE `username` = @username";
+            string cmdText = @"SELECT * FROM [PasswordPolicyDB].[dbo].[Logins] WHERE [Username] = @username";
 
             IDictionary<string, object> sqlParams = new Dictionary<string, object>
             {
                 { "@username", username}
             };
 
-            var dataReader = await _sqlDatabase.GetDataReaderAsync(cmdText);
+            var dataReader = await _sqlDatabase.GetDataReaderAsync(cmdText, sqlParams);
 
             if (dataReader.HasRows == false) return null;
 
@@ -85,12 +85,12 @@ namespace WebLoginDemo.Data.Repositories
             while (await dataReader.ReadAsync())
             {
                 login = new(
-                    username: dataReader.GetString(1),
-                    password: dataReader.GetString(2),
-                    attempts: dataReader.GetInt32(3)
+                    username: dataReader.GetString(0),
+                    password: dataReader.GetString(1),
+                    attempts: dataReader.GetInt32(2)
                     );
             }
-
+            
             return login;
         }
 

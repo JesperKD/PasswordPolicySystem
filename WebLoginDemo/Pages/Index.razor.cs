@@ -8,20 +8,20 @@ namespace WebLoginDemo.Pages
 {
     public partial class Index
     {
+        [Inject] private LoginService LoginService { get; set; }
+        [Inject] private LoginRepository LoginRepository { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         private bool isProcessingSubmit = false;
         private string _infoMessage = string.Empty;
         private string _successMessage = string.Empty;
         private string _errorMessage = string.Empty;
 
         private LoginModel LoginModel;
-        private LoginService LoginService;
-        private readonly LoginRepository LoginRepository;
-        private readonly NavigationManager _NavigationManager;
 
         protected async override Task OnInitializedAsync()
         {
             LoginModel = new();
-            LoginService = new(LoginRepository);
             
             await base.OnInitializedAsync();
         }
@@ -35,7 +35,7 @@ namespace WebLoginDemo.Pages
             {
                 var result = await LoginService.GetByUsernameAsync(LoginModel.Username);
 
-                if(result != null) _NavigationManager.NavigateTo("/success");
+                if(result != null) NavigationManager.NavigateTo("/success");
 
                 else
                 {
@@ -47,6 +47,7 @@ namespace WebLoginDemo.Pages
             catch (System.Exception ex)
             {
                 _errorMessage = ex.Message;
+                System.Console.WriteLine(ex.Message);
                 isProcessingSubmit = false;
                 StateHasChanged();
             }
