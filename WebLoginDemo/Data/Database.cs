@@ -26,9 +26,9 @@ namespace WebLoginDemo.Data
             return connectionString;
         }
 
-        public abstract Task CloseConnectionAsync();
         public abstract Task OpenConnectionAsync();
-        public abstract Task<DbDataReader> GetDataReaderAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
+        public abstract Task CloseConnectionAsync();
         public abstract Task ExecuteNonQueryAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
+        public abstract Task<DbDataReader> GetDataReaderAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
     }
 }

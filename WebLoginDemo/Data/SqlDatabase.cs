@@ -18,6 +18,28 @@ namespace WebLoginDemo.Data
         }
 
         /// <summary>
+        /// Opens database connection
+        /// </summary>
+        /// <returns></returns>
+        public override async Task OpenConnectionAsync()
+        {
+            if (_sqlConnection.State == ConnectionState.Open) return;
+
+            await _sqlConnection.OpenAsync();
+        }
+
+        /// <summary>
+        /// Closes database connection
+        /// </summary>
+        /// <returns></returns>
+        public override async Task CloseConnectionAsync()
+        {
+            if (_sqlConnection.State == ConnectionState.Closed) return;
+
+            await _sqlConnection.CloseAsync();
+        }
+
+        /// <summary>
         /// Executes database query
         /// </summary>
         /// <param name="cmdText"></param>
@@ -65,28 +87,6 @@ namespace WebLoginDemo.Data
             await OpenConnectionAsync();
 
             return await commandObj.ExecuteReaderAsync(CommandBehavior.CloseConnection);
-        }
-
-        /// <summary>
-        /// Closes database connection
-        /// </summary>
-        /// <returns></returns>
-        public override async Task CloseConnectionAsync()
-        {
-            if (_sqlConnection.State == ConnectionState.Closed) return;
-
-            await _sqlConnection.CloseAsync();
-        }
-
-        /// <summary>
-        /// Opens database connection
-        /// </summary>
-        /// <returns></returns>
-        public override async Task OpenConnectionAsync()
-        {
-            if (_sqlConnection.State == ConnectionState.Open) return;
-
-            await _sqlConnection.OpenAsync();
         }
 
         /// <summary>

@@ -6,8 +6,10 @@ namespace WebLoginDemo.Data
 {
     public interface IDatabase
     {
-        Task<DbDataReader> GetDataReaderAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
-
+        Task OpenConnectionAsync();
+        Task CloseConnectionAsync();
         Task ExecuteNonQueryAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
+        Task<DbDataReader> GetDataReaderAsync(string cmdText = null, IDictionary<string, object> sqlParams = null);
+        
     }
 }
