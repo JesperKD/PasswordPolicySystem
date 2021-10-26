@@ -49,7 +49,7 @@ namespace WebLoginDemo.Data.Repositories
 
             List<Login> logins = new();
 
-            while(await datareader.ReadAsync())
+            while (await datareader.ReadAsync())
             {
                 Login tempLogin = new(
                     username: datareader.GetString(1),
@@ -90,8 +90,23 @@ namespace WebLoginDemo.Data.Repositories
                     attempts: dataReader.GetInt32(2)
                     );
             }
-            
+
             return login;
+        }
+
+        public async Task<bool> CheckLogin(Login login)
+        {
+            Login tempUser = await GetByUsernameAsync(login.Username);
+
+            if (tempUser != null)
+            {
+                if (tempUser.Password == login.Password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
     }

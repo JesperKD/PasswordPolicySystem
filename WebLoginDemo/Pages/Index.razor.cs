@@ -3,6 +3,7 @@ using WebLoginDemo.Data.Services;
 using WebLoginDemo.Data.FormModels;
 using Microsoft.AspNetCore.Components;
 using WebLoginDemo.Data.Repositories;
+using WebLoginDemo.DataModels;
 
 namespace WebLoginDemo.Pages
 {
@@ -33,13 +34,16 @@ namespace WebLoginDemo.Pages
             isProcessingSubmit = true;
             try
             {
-                var result = await LoginService.GetByUsernameAsync(LoginModel.Username);
+                Login login = new(LoginModel.Username, LoginModel.Password, LoginModel.Attempts);
 
-                if(result != null) NavigationManager.NavigateTo("/success");
+                bool result = await LoginService.CheckLogin(login);
+
+                if (result == true) NavigationManager.NavigateTo("/success");
 
                 else
                 {
-                    _errorMessage = "Bruger findes ikke i systemet.";
+                    _errorMessage = "En bruger med denne kode findes ikke i systemet.";
+                    isProcessingSubmit = false;
                 }
                 
 

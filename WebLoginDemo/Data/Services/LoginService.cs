@@ -39,6 +39,11 @@ namespace WebLoginDemo.Data.Services
             return await _loginRepository.GetByUsernameAsync(username);
         }
 
+        public async Task<bool> CheckLogin(Login login)
+        {
+            return await _loginRepository.CheckLogin(login);
+        }
+
 
     }
 }
