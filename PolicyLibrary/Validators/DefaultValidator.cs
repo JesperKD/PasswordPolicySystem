@@ -1,9 +1,9 @@
-﻿using System;
+﻿using PolicyLibrary.Validators.Abstractions;
+using PolicyLibrary.Validators.Rules;
+using System;
 using System.Collections.Generic;
-using WebLoginDemo.Data.Validators.Abstractions;
-using WebLoginDemo.Data.Validators.Rules;
 
-namespace WebLoginDemo.Data.Validators
+namespace PolicyLibrary.Validators
 {
     public class DefaultValidator
     {
