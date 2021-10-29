@@ -10,10 +10,10 @@ namespace WebLoginDemo.Data.Services
 {
     public class DefaultValidationService : IValidationService
     {
-        private readonly PolicySettings _policySettings;
+        private readonly IPolicySettings _policySettings;
         private readonly DefaultValidator _validator;
 
-        public DefaultValidationService(PolicySettings policySettings, DefaultValidator validator)
+        public DefaultValidationService(IPolicySettings policySettings, DefaultValidator validator)
         {
             _policySettings = policySettings;
             _validator = validator;

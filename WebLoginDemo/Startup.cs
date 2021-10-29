@@ -34,7 +34,7 @@ namespace WebLoginDemo
             services.AddScoped<IValidationService, DefaultValidationService>();
 
             services.AddScoped<IDatabase, SqlDatabase>();
-            services.AddScoped<LoginRepository>();
+            services.AddScoped<ILoginRepository, DbLoginRepository>();
             services.AddScoped<LoginService>();
         }
 

@@ -64,4 +64,7 @@
     <Build Include="dbo\Tables\Logins.sql" />
     <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="PasswordPolicyDb.publish.xml" />
+  </ItemGroup>
 </Project>

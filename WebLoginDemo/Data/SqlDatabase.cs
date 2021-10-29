@@ -13,7 +13,8 @@ namespace WebLoginDemo.Data
 
         public SqlDatabase(IConfiguration configuration) : base(configuration)
         {
-            string connString = "Server=(localdb)\\MSSQLLOCALDB; Database=PasswordPolicyDB;";
+            string connString = configuration.GetConnectionString("PolicyDb");
+            //string connString = "Server=(localdb)\\MSSQLLOCALDB; Database=PasswordPolicyDB;";
             _sqlConnection = new(connString);
         }
 
@@ -86,7 +87,7 @@ namespace WebLoginDemo.Data
 
             await OpenConnectionAsync();
 
-            return await commandObj.ExecuteReaderAsync(CommandBehavior.CloseConnection);
+            return await commandObj.ExecuteReaderAsync();
         }
 
         /// <summary>
