@@ -15,6 +15,7 @@ namespace WebLoginDemo.Pages
         [Inject] private LoginService LoginService { get; set; }
         [Inject] private LoginRepository LoginRepository { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
+        [Inject] private IValidationService ValidationService { get; set; }
 
         private bool isProcessingSubmit = false;
         private string _infoMessage = string.Empty;
@@ -37,6 +38,8 @@ namespace WebLoginDemo.Pages
             isProcessingSubmit = true;
             try
             {
+                ValidationService.ValidatePassword(LoginModel.Password);
+
                 Login login = new(LoginModel.Username, LoginModel.Password, LoginModel.Attempts);
 
                 await LoginService.CreateAsync(login);
