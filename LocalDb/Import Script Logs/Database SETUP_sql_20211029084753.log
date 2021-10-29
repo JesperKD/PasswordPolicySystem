@@ -1,0 +1,13 @@
+29-10-2021 10:47:53	This log contains information about the import operation of the script 'Database SETUP.sql' into project 'LocalDb' on computer 'ZBCAA-KENN229K' by user'kenn229k.
+29-10-2021 10:47:53	Started importing file: C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\Database Scripts\Database SETUP.sql 
+29-10-2021 10:47:54	File name C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\Database Scripts\Database SETUP.sql (size: 974)
+29-10-2021 10:47:54	Parsing import script
+29-10-2021 10:47:55	Total number of batches in script: 8
+29-10-2021 10:47:56	Total number of statements in script: 2
+29-10-2021 10:47:56	The script was successfully imported into the project.
+29-10-2021 10:47:56	Analyzing schema objects...
+29-10-2021 10:47:56	Scanning project for duplicate elements
+29-10-2021 10:47:56	Finished duplicate element processing
+29-10-2021 10:47:56	In the script that you provided to the import operation, one or more statements were not fully understood. These statements were moved to the ScriptsIgnoredOnImport.sql file. Review the file contents for additional information.
+29-10-2021 10:47:56	A summary of the import was saved to the following location: C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\LocalDb\Import Script Logs\Database SETUP_sql_20211029084753.log
+29-10-2021 10:47:56	Click Finish to continue...
