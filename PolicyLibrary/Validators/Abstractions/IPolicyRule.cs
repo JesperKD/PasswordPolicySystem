@@ -1,4 +1,4 @@
-﻿namespace PolicyLibrary.Validators.Abstractions
+namespace PolicyLibrary.Validators.Abstractions
 {
     public interface IPolicyRule
     {
