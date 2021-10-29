@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using WebLoginDemo.Data.Validators.Abstractions;
-using WebLoginDemo.Data.Validators.Rules;
+using PolicyLibrary.Validators.Abstractions;
+using PolicyLibrary.Validators.Rules;
 
-namespace WebLoginDemoTests.RuleTests
+namespace PolicyLibrary.Tests.RuleTests
 {
     public class LowercaseLetterRuleTests
     {
