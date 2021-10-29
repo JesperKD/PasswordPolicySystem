@@ -1,4 +1,4 @@
-﻿using PolicyLibrary.Validators.Abstractions;
+using PolicyLibrary.Validators.Abstractions;
 using System;
 using System.Linq;
 

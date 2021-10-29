@@ -1,4 +1,4 @@
-﻿using PolicyLibrary.Validators.Abstractions;
+using PolicyLibrary.Validators.Abstractions;
 using PolicyLibrary.Validators.Rules;
 using System;
 using System.Collections.Generic;
