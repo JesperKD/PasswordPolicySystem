@@ -8,9 +8,9 @@ namespace WebLoginDemo.Data.Services
 {
     public class LoginService
     {
-        private readonly LoginRepository _loginRepository;
+        private readonly ILoginRepository _loginRepository;
 
-        public LoginService(LoginRepository loginRepository)
+        public LoginService(ILoginRepository loginRepository)
         {
             _loginRepository = loginRepository;
         }

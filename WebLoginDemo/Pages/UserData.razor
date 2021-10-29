@@ -1,0 +1,46 @@
+﻿@page "/all"
+
+@if (_users is not null)
+{
+    @if (_users.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Brugernavn</th>
+                    <th scope="col">Adgangskode</th>
+                    <th scope="col">Log ind Forsøg</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < _users.Count(); i++)
+                {
+                    <tr>
+                        <th scope="row">@(i)</th>
+                        <td>@(_users.ElementAt(i).Username)</td>
+                        <td>@(_users.ElementAt(i).Password)</td>
+                        <td>@(_users.ElementAt(i).Attempts)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-primary" role="alert">
+            Ingen brugere er oprettet.
+        </div>
+    }
+}
+
+@code {
+    [Inject] protected LoginService LoginService { get; set; }
+
+    private IEnumerable<Login> _users = new List<Login>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _users = await LoginService.GetAllAsync();
+    }
+}

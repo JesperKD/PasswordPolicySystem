@@ -13,7 +13,6 @@ namespace WebLoginDemo.Pages
     public partial class RegisterLogin
     {
         [Inject] private LoginService LoginService { get; set; }
-        [Inject] private LoginRepository LoginRepository { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private IValidationService ValidationService { get; set; }
 
