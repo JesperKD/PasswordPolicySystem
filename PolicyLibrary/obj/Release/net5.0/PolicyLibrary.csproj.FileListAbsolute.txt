@@ -10,3 +10,15 @@ C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\PolicyLibrary\
 C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.dll
 C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\ref\PolicyLibrary.dll
 C:\Users\kenn229k\Desktop\Skp\Jesper project\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.pdb
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\bin\Release\net5.0\PolicyLibrary.deps.json
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\bin\Release\net5.0\PolicyLibrary.dll
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\bin\Release\net5.0\ref\PolicyLibrary.dll
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\bin\Release\net5.0\PolicyLibrary.pdb
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.csproj.AssemblyReference.cache
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.AssemblyInfoInputs.cache
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.AssemblyInfo.cs
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.csproj.CoreCompileInputs.cache
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.dll
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\ref\PolicyLibrary.dll
+C:\Users\jesp446c\source\repos\PasswordPolicySystem\PolicyLibrary\obj\Release\net5.0\PolicyLibrary.pdb
