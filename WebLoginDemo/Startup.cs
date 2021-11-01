@@ -25,16 +25,19 @@ namespace WebLoginDemo
         public void ConfigureServices(IServiceCollection services)
         {
             var policySettings = Configuration.GetSection("PolicySettings").Get<PolicySettings>();
+            var fileSettings = Configuration.GetSection("FileSettings").Get<FileSettings>();
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddSingleton<IFileSettings>(fileSettings);
             services.AddSingleton<IPolicySettings>(policySettings);
             services.AddSingleton<DefaultValidator>();
             services.AddScoped<IValidationService, DefaultValidationService>();
 
             services.AddScoped<IDatabase, SqlDatabase>();
-            services.AddScoped<ILoginRepository, DbLoginRepository>();
+            services.AddScoped<ILoginRepository, FileLoginRepository>();
+            //services.AddScoped<ILoginRepository, DbLoginRepository>();
             services.AddScoped<LoginService>();
         }
 
