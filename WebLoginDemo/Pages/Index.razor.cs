@@ -10,7 +10,6 @@ namespace WebLoginDemo.Pages
     public partial class Index
     {
         [Inject] private LoginService LoginService { get; set; }
-        [Inject] private LoginRepository LoginRepository { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         private bool isProcessingSubmit = false;
